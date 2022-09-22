@@ -14,6 +14,11 @@ class Nav extends React.Component{
 			window.location.reload()
 		}
 
+		function logoutAdmin(){
+			localStorage.removeItem("token_admin")
+			window.location.reload()
+		}
+
 		return(
 			<Fragment>
 			<nav className="z-depth-0 green">
@@ -25,11 +30,14 @@ class Nav extends React.Component{
 					<li><Link to="panduan">Panduan</Link></li>		
 					<li><Link to="blog">Blog</Link></li>
 					<li><Link to="kontak">Kontak</Link></li>
-					{localStorage.getItem("token_id")?
+					{ localStorage.getItem("token_id")?
 						<Fragment><li><Link className="waves-effect waves-light btn-small green darken-3 z-depth-0" to="dashboard">Dashboard</Link></li>
  						<li><Link className="waves-effect waves-light btn-small deep-orange darken-3 z-depth-0" type="submit" value="Logout" onClick={logOut}>Logout</Link></li></Fragment>:
-						<li><Link className="waves-effect waves-light btn-small green darken-3 z-depth-0" to="join">Join</Link></li>
-					}	
+						<li><Link className="waves-effect waves-light btn-small green darken-3 z-depth-0" to="join">Join</Link></li> }
+					
+					{ localStorage.getItem("token_admin") && <Fragment><li><Link to="superadmin">Admin</Link></li>
+						<li><Link onClick={logoutAdmin} >Logout</Link></li>
+						</Fragment> }	
 				</ul>
 			</nav>
 			<ul className="sidenav" id="mobile-demo">	
