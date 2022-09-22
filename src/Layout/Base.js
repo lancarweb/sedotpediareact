@@ -25,12 +25,17 @@ class Base extends React.Component{
 						<Route path="panduan" element={<Panduan />} />						
 						<Route path="blog" element={<Blog />} />
 						<Route path="kontak" element={<Kontak />} />
+						
 						{localStorage.getItem("token_id")?
-						<Route path="dashboard" element={<Dashboard />  } />:
-						<Route path="join" element={<Join />} />
+							<Route path="dashboard" element={<Dashboard />  } />:
+							<Route path="join" element={<Join />} />
 						}
-						<Route path="loginadmin" element={<LoginAdmin />}  />
-						<Route path="superadmin" element={<SuperAdmin />} />
+
+						{localStorage.getItem("token_admin")?
+							<Route path="superadmin" element={<SuperAdmin />} />:	
+							<Route path="loginadmin" element={<LoginAdmin />}  />
+						}
+
 						<Route path="*" element={<Navigate to="/" />} />
 					</Routes>	
 				<Footer />
