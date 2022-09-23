@@ -18,6 +18,7 @@ class SuperAdminPage extends React.Component{
 	}
 
 	render(){
+		console.log(this.state.posts)
 		return(
 			<Fragment>
 				{
