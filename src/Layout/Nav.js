@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import M from "materialize-css/dist/js/materialize.min.js";
 import { Link } from "react-router-dom";
+import "./Nav.css";
 
 class Nav extends React.Component{
 	componentDidMount(){
@@ -32,7 +33,7 @@ class Nav extends React.Component{
 					<li><Link to="kontak">Kontak</Link></li>
 					{ localStorage.getItem("token_id")?
 						<Fragment><li><Link className="waves-effect waves-light btn-small green darken-3 z-depth-0" to="dashboard">Dashboard</Link></li>
- 						<li><Link className="waves-effect waves-light btn-small deep-orange darken-3 z-depth-0" type="submit" value="Logout" onClick={logOut}>Logout</Link></li></Fragment>:
+ 						<li><Link id="logout" className="waves-effect waves-light btn-small z-depth-0" type="submit" value="Logout" onClick={logOut}>Logout</Link></li></Fragment>:
 						<li><Link className="waves-effect waves-light btn-small green darken-3 z-depth-0" to="join">Join</Link></li> }
 					
 					{ localStorage.getItem("token_admin") && <Fragment><li><Link to="superadmin">Admin</Link></li>
