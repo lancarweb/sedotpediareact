@@ -45,6 +45,7 @@ const Join = () => {
 					document.getElementById("username").value = "";
 					document.getElementById("email").value = "";
 					document.getElementById("password").value = "";
+					document.getElementById("phone").value = "";
 					document.getElementById("regvalid").innerHTML = data.message;
 				} else {
 					document.getElementById("regvalid").innerHTML = "<div style='color: red'>"+data.message+"</div>";

@@ -12,6 +12,7 @@ class SuperAdmin extends React.Component{
 							<th>Username</th>
 							<th>Email</th>
 							<th>No. Hp</th>
+							<th>Exp.</th>
 							<th>Aksi</th>
 						</tr>
 					</thead>
