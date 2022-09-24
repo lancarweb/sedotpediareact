@@ -1,6 +1,8 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
+import BaseModul from "./AppModule/BaseModule";
 
 const Dashboard = () => {
+	const [contract, setContract] = useState()
 
 	const token_id = localStorage.getItem("token_id")
 	
@@ -19,9 +21,12 @@ const Dashboard = () => {
 						const dt = new Date(data.message * 1000)
 						const elm = document.getElementById("validate_exp")
 							elm.innerHTML = "Expiration Time: "+ dt;
-							// console.log(data.message)
+						
+						setContract(true)
+
 					} else {
 						document.getElementById("validate_exp").innerHTML = "Akun anda belum aktif";
+						setContract(false)
 					}
 			} else {
 				document.getElementById("title").innerHTML = "terjadi kesalahan!";
@@ -35,23 +40,10 @@ const Dashboard = () => {
 					<p id="validate_exp"></p>
 					<h6 id="title">Selamat datang Bpk/Ibu <b id="username" style={{textTransform: "capitalize"}}></b></h6>
 				</div>
-			
-				<div className="row">	
-					<div className="col s12 m3 l3">
-						<div className="collection">
-							<a className="collection-item">Tokopedia Scraper</a>
-							<a className="collection-item">Tokopedia Uploader</a>
-							<a className="collection-item">Bukalapak Scraper</a>
-							<a className="collection-item">Bukalapak Uploader</a>
-							<a className="collection-item">Shopee Scraper</a>
-							<a className="collection-item">Shopee Uploader</a>
-						</div>	
-					</div>
-					<div className="col s12 m9 l9">
-						<h1>Welcome ...</h1>
-					</div>
-				</div>	
 			</div>
+
+			{contract && <BaseModul />}
+
 		</Fragment>
 	)
 }
