@@ -27,9 +27,16 @@ class TokopediaScraper extends React.Component {
 
 			fetch("http://localhost:8000/sp/api/v1/tokopedia/scraper", requestOptions)
 			.then(response => response.json())
-			.then(data => {this.setState({
-					data: data,
-					btn: true})
+			/**.then(data => console.log(data)) **/
+			.then(data => {
+					if (data){
+						this.setState({
+							data: data,
+							btn: true})
+						} else {
+						/* console.log("false gan !") */
+						document.getElementById("url").value = "url tidak ditemukan !";
+					}
 				})
 		}
 
@@ -42,7 +49,7 @@ class TokopediaScraper extends React.Component {
 							<span>scrape</span>
       					</div>}
       					<div className="file-path-wrapper">
-        					<input name="url" onChange={this.handleChange} className="file-path validate" type="text" />
+        					<input id="url" name="url" onChange={this.handleChange} className="file-path validate" type="text" />
       					</div>
     				</div>
 				</div>
